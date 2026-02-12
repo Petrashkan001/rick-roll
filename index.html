@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Website!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to My Personal Website</h1>
+            <p>I'm so glad you're here!</p>
+        </header>
+        
+        <main>
+            <section class="intro">
+                <h2>About Me</h2>
+                <p>This is where I share my thoughts, projects, and ideas with the world.</p>
+                <button id="surprise-btn" class="surprise-button">Click for a Surprise!</button>
+            </section>
+            
+            <section class="content">
+                <h3>Explore My Work</h3>
+                <p>Feel free to look around and discover what I've been working on lately.</p>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 My Personal Website</p>
+        </footer>
+    </div>
+    
+    <!-- Hidden iframe for the rickroll -->
+    <iframe id="rickroll-frame" style="display:none;"></iframe>
+    
+    <script>
+        // Rickroll function
+        function rickroll() {
+            const rickrollFrame = document.getElementById('rickroll-frame');
+            rickrollFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0';
+            
+            // Also open in new tab for maximum effect
+            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+            
+            // Show a fun message
+            document.body.innerHTML = `
+                <div class="rickroll-container">
+                    <h1>🎵 NEVER GONNA GIVE YOU UP 🎵</h1>
+                    <p>You've been Rickrolled!</p>
+                    <p>Refresh to try again...</p>
+                </div>
+            `;
+        }
+        
+        // Rickroll on page load
+        window.addEventListener('load', function() {
+            setTimeout(rickroll, 1000);
+        });
+        
+        // Rickroll on button click
+        document.getElementById('surprise-btn').addEventListener('click', rickroll);
+        
+        // Rickroll on any interaction
+        document.addEventListener('click', function(e) {
+            if (e.target.id !== 'surprise-btn') {
+                rickroll();
+            }
+        });
+        
+        // Rickroll on mouse movement (subtle)
+        let moveCount = 0;
+        document.addEventListener('mousemove', function() {
+            moveCount++;
+            if (moveCount > 50) {
+                rickroll();
+            }
+        });
+    </script>
+</body>
+</html>
